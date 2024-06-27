@@ -1,0 +1,15 @@
+---
+# tasks file for httpd
+  - name: Install Apache 2 
+    ansible.builtin.apt:
+      name: apache2
+    notify:
+      - Restart apache
+
+  - name: Copy files with owner and permissions 
+    ansible.builtin.copy:
+      src: files/index.html
+      dest: /var/www/html
+      owner: root
+      group: root
+      mode: '0644'
